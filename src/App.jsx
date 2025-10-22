@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { toast, Toaster } from 'react-hot-toast';
 import { AuthProvider } from './context/AuthContext';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import MyList from './pages/MyList';
+import Profile from './pages/Profile';
 
 function App() {
   const [currentPage, setCurrentPage] = useState(() => {
@@ -14,6 +15,7 @@ function App() {
     const saved = localStorage.getItem('myList');
     return saved ? JSON.parse(saved) : [];
   });
+  const toastTimeoutRef = useRef(null);
 
   useEffect(() => {
     localStorage.setItem('currentPage', currentPage);
@@ -22,6 +24,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem('myList', JSON.stringify(myList));
   }, [myList]);
+
 
   const addToMyList = (movie) => {
     const isAlreadyInList = myList.some(item => item.id === movie.id);
@@ -47,18 +50,22 @@ function App() {
       const updatedList = prevList.filter(item => item.id !== movieId);
 
       if (movie) {
-        toast.success(`${movie.title} dihapus dari Daftar Saya`);
+        if (toastTimeoutRef.current) {
+          clearTimeout(toastTimeoutRef.current);
+        }
+
+        toastTimeoutRef.current = setTimeout(() => {
+          toast.success(`${movie.title} dihapus dari Daftar Saya`);
+        }, 10);
       }
 
       return updatedList;
     });
   };
 
-
-
-  const handlePlayMovie = (movie) => {
-    console.log('Playing:', movie);
-    toast.success(`Memulai ${movie.title}`);
+  const clearMyList = () => {
+    setMyList([]);
+    toast.success('Semua film telah dihapus dari daftar Anda');
   };
 
   const renderPage = () => {
@@ -74,7 +81,14 @@ function App() {
             onNavigate={setCurrentPage}
             myList={myList}
             onRemoveFromMyList={removeFromMyList}
-            onPlayMovie={handlePlayMovie}
+            onClearMyList={clearMyList}
+          />
+        );
+      case 'profile':
+        return (
+          <Profile
+            onNavigate={setCurrentPage}
+            myList={myList}
           />
         );
       case 'home':
@@ -85,7 +99,6 @@ function App() {
             myList={myList}
             onAddToMyList={addToMyList}
             onRemoveFromMyList={removeFromMyList}
-            onPlayMovie={handlePlayMovie}
           />
         );
     }

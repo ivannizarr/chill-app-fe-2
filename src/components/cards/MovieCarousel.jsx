@@ -46,16 +46,17 @@ const MovieCarousel = ({
           )}
 
           {!isHorizontal && (
-            <div className="absolute top-2 left-2 right-2 z-10 flex justify-between items-start">
-              <div className="flex flex-col gap-2">
-                {item.isPremium && (
+            <>
+              {/* Premium Badge */}
+              {item.isPremium && (
+                <div className="absolute top-2 left-2 z-10">
                   <Badge variant="premium" size="xs">Premium</Badge>
-                )}
-              </div>
+                </div>
+              )}
 
-              {/* Action Buttons - Show on Hover */}
+              {/* Centered Action Button - Show on Hover */}
               {isHovered && (
-                <div className="flex flex-col gap-1">
+                <div className="absolute inset-0 flex items-center justify-center z-10">
                   {/* Add to List / Remove from List Button */}
                   {variant !== 'continue-watching' && (
                     <button
@@ -63,13 +64,13 @@ const MovieCarousel = ({
                         e.stopPropagation();
                         if (onInfo) onInfo(item);
                       }}
-                      className="w-8 h-8 bg-black/70 hover:bg-black/90 rounded-full flex items-center justify-center transition-all duration-200 border border-white/20"
+                      className="w-12 h-12 bg-black/80 hover:bg-black/90 rounded-full flex items-center justify-center transition-all duration-200 border border-white/30"
                       aria-label={isInMyList || variant === 'my-list' ? 'Remove from My List' : 'Add to My List'}
                     >
                       {isInMyList || variant === 'my-list' ? (
-                        <X className="w-4 h-4 text-red-400" />
+                        <X className="w-6 h-6 text-red-400" />
                       ) : (
-                        <Plus className="w-4 h-4 text-white" />
+                        <Plus className="w-6 h-6 text-white" />
                       )}
                     </button>
                   )}
@@ -81,15 +82,15 @@ const MovieCarousel = ({
                         e.stopPropagation();
                         if (onInfo) onInfo(item);
                       }}
-                      className="w-8 h-8 bg-black/70 hover:bg-red-600/90 rounded-full flex items-center justify-center transition-all duration-200 border border-white/20"
+                      className="w-12 h-12 bg-black/80 hover:bg-red-600/90 rounded-full flex items-center justify-center transition-all duration-200 border border-white/30"
                       aria-label="Remove from Continue Watching"
                     >
-                      <X className="w-4 h-4 text-white" />
+                      <X className="w-6 h-6 text-white" />
                     </button>
                   )}
                 </div>
               )}
-            </div>
+            </>
           )}
 
           {isHorizontal ? (

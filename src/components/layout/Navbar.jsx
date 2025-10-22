@@ -17,6 +17,7 @@ const Navbar = ({ onNavigate }) => {
 
   const handleProfileClick = () => {
     setIsDropdownOpen(false);
+    onNavigate('profile');
   };
 
   const handlePremiumClick = () => {

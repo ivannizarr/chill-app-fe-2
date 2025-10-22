@@ -1,8 +1,7 @@
-import { Play, Trash2, Plus } from 'lucide-react';
-import { toast } from 'react-hot-toast';
+import { Play, Trash2, Plus, X } from 'lucide-react';
 import MainLayout from '../components/layout/MainLayout';
 
-const MyList = ({ onNavigate, myList, onRemoveFromMyList, onPlayMovie }) => {
+const MyList = ({ onNavigate, myList, onRemoveFromMyList, onClearMyList }) => {
 
   const handleRemoveMovie = (movie) => {
     if (onRemoveFromMyList) {
@@ -10,11 +9,6 @@ const MyList = ({ onNavigate, myList, onRemoveFromMyList, onPlayMovie }) => {
     }
   };
 
-  const handlePlayMovie = (movie) => {
-    if (onPlayMovie) {
-      onPlayMovie(movie);
-    }
-  };
 
   return (
     <MainLayout onNavigate={onNavigate}>
@@ -23,8 +17,9 @@ const MyList = ({ onNavigate, myList, onRemoveFromMyList, onPlayMovie }) => {
           {/* Header Section */}
           <section className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 pt-8 pb-6">
             <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+              {/* Title */}
               <div>
-                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-2">
+                <h1 className="text-xl sm:text-2xl font-semibold mb-2">
                   Daftar Saya
                 </h1>
                 <p className="text-white/70 text-sm md:text-base">
@@ -33,27 +28,28 @@ const MyList = ({ onNavigate, myList, onRemoveFromMyList, onPlayMovie }) => {
               </div>
 
               {/* Action Buttons */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2 md:gap-3 flex-nowrap">
                 <button
                   onClick={() => onNavigate('home')}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors duration-200 flex items-center gap-2"
+                  className="flex-1 md:flex-none min-w-0 px-3 md:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs md:text-sm font-medium rounded-lg transition-colors duration-200 flex items-center justify-center gap-1 md:gap-2 whitespace-nowrap"
                 >
-                  <Plus className="w-4 h-4" />
-                  Tambah Film
+                  <Plus className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
+                  <span className="hidden md:inline">Tambah Film</span>
+                  <span className="md:hidden">Tambah</span>
                 </button>
 
                 {myList.length > 0 && (
                   <button
                     onClick={() => {
                       if (window.confirm('Hapus semua film dari daftar Anda?')) {
-                        myList.forEach(movie => handleRemoveMovie(movie));
-                        toast.success('Semua film telah dihapus dari daftar Anda');
+                        onClearMyList();
                       }
                     }}
-                    className="px-4 py-2 bg-red-600/20 hover:bg-red-600/30 text-red-400 text-sm font-medium rounded-lg border border-red-600/30 transition-colors duration-200 flex items-center gap-2"
+                    className="flex-1 md:flex-none min-w-0 px-3 md:px-4 py-2 bg-red-600/20 hover:bg-red-600/30 text-red-400 text-xs md:text-sm font-medium rounded-lg border border-red-600/30 transition-colors duration-200 flex items-center justify-center gap-1 md:gap-2 whitespace-nowrap"
                   >
-                    <Trash2 className="w-4 h-4" />
-                    Hapus Semua
+                    <Trash2 className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
+                    <span className="hidden md:inline">Hapus Semua</span>
+                    <span className="md:hidden">Hapus</span>
                   </button>
                 )}
               </div>
@@ -63,7 +59,6 @@ const MyList = ({ onNavigate, myList, onRemoveFromMyList, onPlayMovie }) => {
           {/* Movies Grid */}
           <section className="px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 pb-8">
             {myList.length === 0 ? (
-              // Empty State
               <div className="flex flex-col items-center justify-center min-h-[400px] text-center">
                 <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center mb-6">
                   <Play className="w-10 h-10 text-white/50" />
@@ -84,14 +79,12 @@ const MyList = ({ onNavigate, myList, onRemoveFromMyList, onPlayMovie }) => {
             ) : (
 
               <div>
-                {/* Custom Grid Layout for My List */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6">
                   {myList.map((movie, index) => (
                     <div key={movie.uniqueId || movie.id || index} className="flex flex-col">
                       <div className="relative group">
                         <div
-                          className="relative w-full aspect-[2/3] rounded-xl overflow-hidden bg-neutral-900 cursor-pointer transition-all duration-300 transform-gpu hover:scale-105"
-                          onClick={() => handlePlayMovie(movie)}
+                          className="relative w-full aspect-[2/3] rounded-xl overflow-hidden bg-neutral-900 transition-all duration-300 transform-gpu hover:scale-105"
                         >
                           <img
                             src={movie.img}
@@ -101,19 +94,19 @@ const MyList = ({ onNavigate, myList, onRemoveFromMyList, onPlayMovie }) => {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-60" />
 
-                          {/* Remove Button - Top Right */}
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleRemoveMovie(movie);
-                            }}
-                            className="absolute top-2 right-2 w-8 h-8 bg-black/70 hover:bg-red-600/90 rounded-full flex items-center justify-center transition-all duration-200 border border-white/20 opacity-0 group-hover:opacity-100"
-                            aria-label="Remove from My List"
-                          >
-                            <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                          </button>
+                          {/* Remove Button - Centered */}
+                          <div className="absolute inset-0 flex items-center justify-center z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                            <button
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                handleRemoveMovie(movie);
+                              }}
+                              className="w-12 h-12 bg-black/80 hover:bg-red-600/90 rounded-full flex items-center justify-center transition-all duration-200 border border-white/30"
+                              aria-label="Remove from My List"
+                            >
+                              <X className="w-6 h-6 text-red-400" />
+                            </button>
+                          </div>
 
                           {/* Movie Info - Bottom */}
                           <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black via-black/80 to-transparent">
