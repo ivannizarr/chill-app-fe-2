@@ -1,0 +1,223 @@
+{
+  "continueWatching": [
+    {
+      "id": 101,
+      "title": "Don't Look Up",
+      "img": "/Assets/movies/dont-look-up.webp",
+      "rating": "4.5/5",
+      "progress": 45,
+      "genre": "Comedy, Drama",
+      "year": 2021,
+      "duration": "138 min",
+      "synopsis": "Two astronomers go on a media tour to warn humankind of a planet-killer comet hurtling toward Earth.",
+      "isPremium": false
+    },
+    {
+      "id": 102,
+      "title": "All of Us Are Dead",
+      "img": "/Assets/movies/all-of-us-are-dead.webp",
+      "rating": "4.2/5",
+      "progress": 78,
+      "genre": "Horror, Thriller",
+      "year": 2022,
+      "duration": "120 min",
+      "synopsis": "A high school becomes ground zero for a zombie virus outbreak. Trapped students must fight their way out.",
+      "isPremium": false
+    },
+    {
+      "id": 103,
+      "title": "Blue Lock",
+      "img": "/Assets/movies/blue-lock.webp",
+      "rating": "4.6/5",
+      "progress": 65,
+      "genre": "Animation, Sports",
+      "year": 2022,
+      "duration": "24 min",
+      "synopsis": "Japan's under-20 football team faces a crisis. A radical training program called Blue Lock is launched.",
+      "isPremium": true
+    },
+    {
+      "id": 104,
+      "title": "A Man Called Otto",
+      "img": "/Assets/movies/a-man-called-otto.webp",
+      "rating": "4.7/5",
+      "progress": 32,
+      "genre": "Drama, Comedy",
+      "year": 2022,
+      "duration": "126 min",
+      "synopsis": "Otto is a grump who's given up on life following the loss of his wife and wants to end it all.",
+      "isPremium": false
+    }
+  ],
+  "topRating": [
+    {
+      "id": 105,
+      "title": "Suzume",
+      "img": "/Assets/movies/suzume.webp",
+      "rating": "4.9/5",
+      "genre": "Animation, Adventure",
+      "year": 2023,
+      "duration": "122 min",
+      "synopsis": "A 17-year-old girl's journey across Japan to close mysterious doors causing disasters.",
+      "isPremium": true
+    },
+    {
+      "id": 106,
+      "title": "Jurassic World Dominion",
+      "img": "/Assets/movies/jurassic-world-dominion.webp",
+      "rating": "4.3/5",
+      "genre": "Action, Sci-Fi",
+      "year": 2022,
+      "duration": "147 min",
+      "synopsis": "Four years after Isla Nublar's destruction, dinosaurs live and hunt alongside humans all over the world.",
+      "isPremium": true
+    },
+    {
+      "id": 107,
+      "title": "Sonic 2",
+      "img": "/Assets/movies/sonic-2.webp",
+      "rating": "4.5/5",
+      "genre": "Adventure, Comedy",
+      "year": 2022,
+      "duration": "122 min",
+      "synopsis": "Sonic teams up with Tails to stop Dr. Robotnik and Knuckles from finding a powerful emerald.",
+      "isPremium": false
+    },
+    {
+      "id": 108,
+      "title": "All of Us Are Dead",
+      "img": "/Assets/movies/all-of-us-are-dead.webp",
+      "rating": "4.8/5",
+      "genre": "Action, Drama",
+      "year": 2022,
+      "duration": "131 min",
+      "synopsis": "A zombie apocalypse breaks out in a high school, trapping students inside as they fight to survive.",
+      "isPremium": true
+    },
+    {
+      "id": 109,
+      "title": "Big Hero 6",
+      "img": "/Assets/movies/big-hero-6.webp",
+      "rating": "4.7/5",
+      "genre": "Animation, Family",
+      "year": 2014,
+      "duration": "102 min",
+      "synopsis": "A young robotics prodigy teams up with an inflatable healthcare robot and friends to form a superhero team.",
+      "isPremium": true
+    }
+  ],
+  "trending": [
+    {
+      "id": 110,
+      "title": "The Tomorrow War",
+      "img": "/Assets/movies/the-tomorrow-war.webp",
+      "rating": "4.0/5",
+      "genre": "Action, Sci-Fi",
+      "year": 2021,
+      "duration": "138 min",
+      "synopsis": "A family man is drafted to fight in a future war where humanity fights against an alien species.",
+      "isPremium": false
+    },
+    {
+      "id": 111,
+      "title": "Quantumania",
+      "img": "/Assets/movies/quantumania.webp",
+      "rating": "4.1/5",
+      "genre": "Adventure, Sci-Fi",
+      "year": 2023,
+      "duration": "125 min",
+      "synopsis": "Scott Lang and Hope Van Dyne explore the Quantum Realm, uncovering strange new creatures.",
+      "isPremium": true
+    },
+    {
+      "id": 112,
+      "title": "Guardians of the Galaxy 3",
+      "img": "/Assets/movies/guardians-of-the-galaxy-3.webp",
+      "rating": "4.6/5",
+      "genre": "Action, Comedy",
+      "year": 2023,
+      "duration": "150 min",
+      "synopsis": "The Guardians embark on a mission to protect one of their own and unravel Rocket's mysterious past.",
+      "isPremium": true
+    },
+    {
+      "id": 113,
+      "title": "A Man Called Otto",
+      "img": "/Assets/movies/a-man-called-otto.webp",
+      "rating": "4.2/5",
+      "genre": "Drama, Comedy",
+      "year": 2022,
+      "duration": "126 min",
+      "synopsis": "Otto is a grump who's given up on life following the loss of his wife and wants to end it all.",
+      "isPremium": false
+    },
+    {
+      "id": 114,
+      "title": "Little Mermaid",
+      "img": "/Assets/movies/little-mermaid.webp",
+      "rating": "4.3/5",
+      "genre": "Adventure, Fantasy",
+      "year": 2023,
+      "duration": "144 min",
+      "synopsis": "Barry Allen uses his super speed to change the past but creates a world without superheroes.",
+      "isPremium": true
+    }
+  ],
+  "newReleases": [
+    {
+      "id": 115,
+      "title": "Little Mermaid",
+      "img": "/Assets/movies/little-mermaid.webp",
+      "rating": "4.4/5",
+      "genre": "Fantasy, Romance",
+      "year": 2023,
+      "duration": "135 min",
+      "synopsis": "A young mermaid makes a deal with a sea witch to trade her voice for legs.",
+      "isPremium": false
+    },
+    {
+      "id": 116,
+      "title": "Duty After School",
+      "img": "/Assets/movies/duty-after-school.webp",
+      "rating": "4.5/5",
+      "genre": "Sci-Fi, Thriller",
+      "year": 2023,
+      "duration": "110 min",
+      "synopsis": "Students become soldiers to fight mysterious spheres attacking Earth.",
+      "isPremium": true
+    },
+    {
+      "id": 117,
+      "title": "Big Hero 6",
+      "img": "/Assets/movies/big-hero-6.webp",
+      "rating": "4.6/5",
+      "genre": "Animation, Adventure",
+      "year": 2014,
+      "duration": "102 min",
+      "synopsis": "A robotics prodigy and his robot companion team up with friends to form a band of high-tech heroes.",
+      "isPremium": false
+    },
+    {
+      "id": 118,
+      "title": "All of Us Are Dead",
+      "img": "/Assets/movies/all-of-us-are-dead.webp",
+      "rating": "4.3/5",
+      "genre": "Action, Thriller",
+      "year": 2023,
+      "duration": "123 min",
+      "synopsis": "Tyler Rake returns as a fearless mercenary tasked with another deadly mission.",
+      "isPremium": true
+    },
+    {
+      "id": 119,
+      "title": "Missing",
+      "img": "/Assets/movies/missing.webp",
+      "rating": "4.0/5",
+      "genre": "Adventure, Action",
+      "year": 2023,
+      "duration": "154 min",
+      "synopsis": "Archaeologist Indiana Jones races against time to retrieve a legendary artifact.",
+      "isPremium": false
+    }
+  ]
+}
