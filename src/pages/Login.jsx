@@ -83,7 +83,7 @@ const Login = ({ onNavigate }) => {
                 placeholder="Masukkan username"
                 value={formData.username}
                 onChange={handleChange}
-                className="w-full px-4 py-2 bg-transparent border border-gray-400 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                className="w-full px-4 py-2 bg-transparent border border-gray-400 rounded-full text-white text-sm placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-white focus:border-transparent"
                 required
               />
             </div>
@@ -99,7 +99,7 @@ const Login = ({ onNavigate }) => {
                   placeholder="Masukkan kata sandi"
                   value={formData.password}
                   onChange={handleChange}
-                  className="w-full px-4 py-2 pr-12 bg-transparent border border-gray-400 rounded-full text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent"
+                  className="w-full px-4 py-2 pr-12 bg-transparent border border-gray-400 rounded-full text-white text-sm placeholder-gray-400 focus:outline-none focus:ring-1 focus:ring-white focus:border-transparent"
                   required
                 />
                 <button

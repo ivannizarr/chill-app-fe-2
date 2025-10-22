@@ -41,7 +41,8 @@ export default function MovieSection({
   items = [],
   onItemClick,
   onItemInfo,
-  containerClass = ""
+  containerClass = "",
+  myList = []
 }) {
   const scrollerRef = useRef(null);
 
@@ -90,18 +91,20 @@ export default function MovieSection({
         role="region"
         aria-label={`${title} carousel`}
       >
-        <div className="hidden md:block">
-          <NavigationButton
-            direction="left"
-            onClick={() => scrollCards('left')}
-            visible={true}
-          />
-          <NavigationButton
-            direction="right"
-            onClick={() => scrollCards('right')}
-            visible={true}
-          />
-        </div>
+        {containerClass !== 'my-list' && (
+          <div className="hidden md:block">
+            <NavigationButton
+              direction="left"
+              onClick={() => scrollCards('left')}
+              visible={true}
+            />
+            <NavigationButton
+              direction="right"
+              onClick={() => scrollCards('right')}
+              visible={true}
+            />
+          </div>
+        )}
 
         <div
           ref={scrollerRef}
@@ -134,6 +137,8 @@ export default function MovieSection({
               variant = 'new-release';
             }
 
+            const isInMyList = myList.some(myListItem => myListItem.id === item.id);
+
             return (
               <div key={key} role="listitem" className="snap-start">
                 <MovieCarousel
@@ -143,6 +148,7 @@ export default function MovieSection({
                   trendingPosition={index + 1}
                   onPlay={onItemClick}
                   onInfo={onItemInfo}
+                  isInMyList={isInMyList}
                 />
               </div>
             );

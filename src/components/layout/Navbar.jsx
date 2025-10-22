@@ -49,14 +49,18 @@ const Navbar = ({ onNavigate }) => {
             </button>
 
             <nav className="flex items-center space-x-4 md:space-x-10">
-              {['Series', 'Film', 'Daftar Saya'].map((item, index) => (
-                <button
-                  key={index}
-                  className="text-xs md:text-sm lg:text-base font-semibold transition-colors duration-200 text-white hover:text-gray-400"
-                >
-                  {item}
-                </button>
-              ))}
+              <button className="text-xs md:text-sm lg:text-base font-semibold transition-colors duration-200 text-white hover:text-gray-400">
+                Series
+              </button>
+              <button className="text-xs md:text-sm lg:text-base font-semibold transition-colors duration-200 text-white hover:text-gray-400">
+                Film
+              </button>
+              <button
+                onClick={() => onNavigate('mylist')}
+                className="text-xs md:text-sm lg:text-base font-semibold transition-colors duration-200 text-white hover:text-gray-400"
+              >
+                Daftar Saya
+              </button>
             </nav>
           </div>
 

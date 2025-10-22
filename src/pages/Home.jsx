@@ -12,7 +12,26 @@ const HERO_CONTENT = {
   isPremium: true
 };
 
-const Home = ({ onNavigate }) => {
+const Home = ({
+  onNavigate,
+  myList,
+  onAddToMyList,
+  onRemoveFromMyList,
+  onPlayMovie
+}) => {
+  // Handler untuk movie actions (add to list, remove, etc)
+  const handleMovieAction = (movie, action) => {
+    switch(action) {
+      case 'addToList':
+        onAddToMyList(movie);
+        break;
+      case 'removeFromList':
+        onRemoveFromMyList(movie.id);
+        break;
+      default:
+        console.log('Unknown action:', action);
+    }
+  };
 
   return (
     <MainLayout onNavigate={onNavigate}>
@@ -82,19 +101,30 @@ const Home = ({ onNavigate }) => {
               <MovieSection
                 title="Melanjutkan Tonton Film"
                 items={moviesData.continueWatching}
-                onItemClick={(item) => console.log('Play:', item)}
+                onItemClick={onPlayMovie}
                 cardType="horizontal"
                 containerClass="continue-watching"
+                myList={myList}
               />
             </section>
+
 
             <section className="w-full px-4 sm:px-6 md:px-10 lg:px-16 xl:px-20 py-1 sm:py-2 md:py-3" aria-label="Top rating">
               <MovieSection
                 title="Top Rating Film dan Series Hari ini"
                 items={moviesData.topRating}
-                onItemClick={(item) => console.log('Play:', item)}
+                onItemClick={onPlayMovie}
+                onItemInfo={(item) => {
+                  const isInMyList = myList.some(movie => movie.id === item.id);
+                  if (isInMyList) {
+                    handleMovieAction(item, 'removeFromList');
+                  } else {
+                    handleMovieAction(item, 'addToList');
+                  }
+                }}
                 cardType="vertical"
                 containerClass="top-rating"
+                myList={myList}
               />
             </section>
 
@@ -102,9 +132,18 @@ const Home = ({ onNavigate }) => {
               <MovieSection
                 title="Film Trending"
                 items={moviesData.trending}
-                onItemClick={(item) => console.log('Play:', item)}
+                onItemClick={onPlayMovie}
+                onItemInfo={(item) => {
+                  const isInMyList = myList.some(movie => movie.id === item.id);
+                  if (isInMyList) {
+                    handleMovieAction(item, 'removeFromList');
+                  } else {
+                    handleMovieAction(item, 'addToList');
+                  }
+                }}
                 cardType="vertical"
                 containerClass="trending"
+                myList={myList}
               />
             </section>
 
@@ -112,9 +151,18 @@ const Home = ({ onNavigate }) => {
               <MovieSection
                 title="Rilis Baru"
                 items={moviesData.newReleases}
-                onItemClick={(item) => console.log('Play:', item)}
+                onItemClick={onPlayMovie}
+                onItemInfo={(item) => {
+                  const isInMyList = myList.some(movie => movie.id === item.id);
+                  if (isInMyList) {
+                    handleMovieAction(item, 'removeFromList');
+                  } else {
+                    handleMovieAction(item, 'addToList');
+                  }
+                }}
                 cardType="vertical"
                 containerClass="new-releases"
+                myList={myList}
               />
             </section>
           </div>
