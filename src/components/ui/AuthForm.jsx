@@ -1,7 +1,7 @@
 import { FcGoogle } from 'react-icons/fc';
-import Button from '../ui/Button';
-import FormInput from '../ui/FormInput';
-import { useAuthForm } from '../../hooks/useAuthForm';
+import Button from '@ui/Button';
+import FormInput from '@ui/FormInput';
+import { useAuthForm } from '@hooks/useAuthForm';
 
 const AuthForm = ({ type = 'login', onNavigate }) => {
   const {
@@ -20,7 +20,7 @@ const AuthForm = ({ type = 'login', onNavigate }) => {
 
   return (
     <form onSubmit={(e) => handleSubmit(e, onNavigate)} className="space-y-6">
-      {/* Username Field */}
+      {/* Username */}
       <FormInput
         label="Username"
         name="username"
@@ -31,7 +31,7 @@ const AuthForm = ({ type = 'login', onNavigate }) => {
         required
       />
 
-      {/* Password Field */}
+      {/* Password */}
       <FormInput
         label="Kata Sandi"
         name="password"
@@ -44,7 +44,7 @@ const AuthForm = ({ type = 'login', onNavigate }) => {
         required
       />
 
-      {/* Confirm Password Field - Register Only */}
+      {/* Confirm Password */}
       {isRegister && (
         <FormInput
           label="Konfirmasi Kata Sandi"
@@ -60,18 +60,18 @@ const AuthForm = ({ type = 'login', onNavigate }) => {
       )}
 
       {/* Navigation Links */}
-      <div className={`flex ${isLogin ? 'justify-between' : 'text-left'} items-center text-sm -mt-1`}>
+      <div className="flex justify-between items-center text-sm font-light -mt-1">
         <span className="text-gray-300">
           {isLogin ? 'Belum punya akun?' : 'Sudah punya akun?'}
           <button
             type="button"
             onClick={() => onNavigate(isLogin ? 'register' : 'login')}
-            className="font-semibold text-gray-300 hover:text-white ml-1 underline"
+            className="font-semibold text-white ml-1 hover:underline"
           >
             {isLogin ? 'Daftar' : 'Masuk'}
           </button>
         </span>
-        {isLogin && (
+        {isLogin ? (
           <button
             type="button"
             onClick={() => onNavigate('forgot')}
@@ -79,6 +79,8 @@ const AuthForm = ({ type = 'login', onNavigate }) => {
           >
             Lupa kata sandi?
           </button>
+        ) : (
+          <span></span>
         )}
       </div>
 
@@ -90,8 +92,8 @@ const AuthForm = ({ type = 'login', onNavigate }) => {
           size="md"
           className={`w-full text-white text-sm ${
             isLogin
-              ? '!bg-[#3D4142] hover:!bg-gray-700'
-              : 'bg-[#3D4142] hover:bg-gray-700'
+              ? '!bg-[#3D4142] hover:!bg-gray-800'
+              : 'bg-[#3D4142] hover:bg-gray-800'
           }`}
         >
           {isLogin ? 'Masuk' : 'Daftar'}
@@ -106,7 +108,7 @@ const AuthForm = ({ type = 'login', onNavigate }) => {
           onClick={() => handleGoogleAuth(onNavigate)}
           variant="ghost"
           size="md"
-          className="w-full flex items-center justify-center !bg-transparent border-[0.5px] border-gray-300 text-white hover:!bg-transparent text-sm"
+          className="w-full flex items-center justify-center !bg-transparent border-[0.5px] border-gray-300 text-white hover:!bg-transparent text-sm font-light"
         >
           <FcGoogle className="w-5 h-5 mr-2" />
           {isLogin ? 'Masuk' : 'Daftar'} dengan Google

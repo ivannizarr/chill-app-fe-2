@@ -8,7 +8,7 @@ const AuthLayout = ({ backgroundImage, title, subtitle, children }) => {
         backgroundPosition: 'center'
       }}
     >
-      <div className="absolute inset-0 bg-black/20" />
+      <div className="absolute inset-0 bg-black/70" />
 
       <div className="relative z-10 w-full max-w-md mx-4">
         <div className="bg-[#181A1CD6] backdrop-blur-md rounded-2xl p-8 shadow-2xl">

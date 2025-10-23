@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { User, Crown, LogOut, ChevronDown } from "lucide-react";
-import { useAuth } from "../../context/AuthContext";
-import Avatar from "../ui/Avatar";
-import Button from "../ui/Button";
+import { useAuth } from "@context/AuthContext";
+import Avatar from "@ui/Avatar";
+import Button from "@ui/Button";
 
 const Navbar = ({ onNavigate }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);

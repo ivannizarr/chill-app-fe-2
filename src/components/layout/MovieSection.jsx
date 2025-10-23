@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import { ChevronLeft, ChevronRight } from 'lucide-react';
-import MovieCarousel from '../cards/MovieCarousel';
+import MovieCarousel from '@components/cards/MovieCarousel';
 
 const NavigationButton = ({
   direction,

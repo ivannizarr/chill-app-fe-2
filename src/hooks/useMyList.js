@@ -1,6 +1,6 @@
 import { useRef } from 'react';
 import { toast } from 'react-hot-toast';
-import { useMyListContext } from '../context/MyListContext';
+import { useMyListContext } from '@context/MyListContext';
 
 export const useMyList = () => {
   const { myList, addToMyList: addToMyListContext, removeFromMyList: removeFromMyListContext, clearMyList: clearMyListContext, isInMyList } = useMyListContext();

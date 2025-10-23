@@ -1,8 +1,8 @@
 import { Info } from 'lucide-react';
 import { IoMdVolumeHigh } from 'react-icons/io';
-import MainLayout from '../components/layout/MainLayout';
-import MovieSection from '../components/layout/MovieSection';
-import moviesData from '../data/movies.json';
+import MainLayout from '@layout/MainLayout';
+import MovieSection from '@layout/MovieSection';
+import moviesData from '@/data/movies.json';
 
 const HERO_CONTENT = {
   title: "Duty After School",

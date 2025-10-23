@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { toast } from 'react-hot-toast';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '@context/AuthContext';
 
 export const useAuthForm = (type = 'login') => {
   const { login, register } = useAuth();

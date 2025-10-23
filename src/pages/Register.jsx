@@ -1,5 +1,5 @@
-import AuthLayout from '../components/layout/AuthLayout';
-import AuthForm from '../components/ui/AuthForm';
+import AuthLayout from '@layout/AuthLayout';
+import AuthForm from '@ui/AuthForm';
 
 const Register = ({ onNavigate }) => {
   return (

@@ -1,8 +1,8 @@
 import { UploadCloud, ChevronRight, User, Mail, Lock, Pencil, Megaphone } from "lucide-react";
 import { toast } from 'react-hot-toast';
-import MainLayout from '../components/layout/MainLayout';
-import Button from '../components/ui/Button';
-import { useProfileForm } from '../hooks/useProfileForm';
+import MainLayout from '@layout/MainLayout';
+import Button from '@ui/Button';
+import { useProfileForm } from '@hooks/useProfileForm';
 
 const ProfileInputField = ({
   label,

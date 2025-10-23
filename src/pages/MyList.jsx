@@ -1,6 +1,6 @@
 import { Play, Trash2, Plus, X } from 'lucide-react';
-import MainLayout from '../components/layout/MainLayout';
-import Button from '../components/ui/Button';
+import MainLayout from '@layout/MainLayout';
+import Button from '@ui/Button';
 
 const MyList = ({ onNavigate, myList, onRemoveFromMyList, onClearMyList }) => {
 
@@ -101,7 +101,7 @@ const MyList = ({ onNavigate, myList, onRemoveFromMyList, onClearMyList }) => {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent opacity-60" />
 
-                          {/* Remove Button - Centered */}
+                          {/* Remove Button */}
                           <div className="absolute inset-0 flex items-center justify-center z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
                             <button
                               onClick={(e) => {
@@ -115,7 +115,7 @@ const MyList = ({ onNavigate, myList, onRemoveFromMyList, onClearMyList }) => {
                             </button>
                           </div>
 
-                          {/* Movie Info - Bottom */}
+                          {/* Movie Info */}
                           <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-black via-black/80 to-transparent">
                             <h3 className="text-white font-semibold text-sm line-clamp-2 mb-1">
                               {movie.title}

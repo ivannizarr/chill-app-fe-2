@@ -1,4 +1,9 @@
-const Badge = ({ children, variant = 'default', size = 'sm', className = '' }) => {
+const Badge = ({ 
+  children,
+  variant = 'default',
+  size = 'sm',
+  className = '' 
+}) => {
   const variants = {
     default: 'bg-gray-500 text-white',
     premium: 'bg-yellow-600 text-white',

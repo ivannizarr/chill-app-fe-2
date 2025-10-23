@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Plus, X, Play } from 'lucide-react';
 import MovieCard from './MovieCard';
-import Badge from '../ui/Badge';
+import Badge from '@ui/Badge';
 
 const MovieCarousel = ({
   item,
