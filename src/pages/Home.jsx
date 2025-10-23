@@ -19,7 +19,7 @@ const Home = ({
   onRemoveFromMyList,
   onPlayMovie
 }) => {
-  // Handler untuk movie actions (add to list, remove, etc)
+
   const handleMovieAction = (movie, action) => {
     switch(action) {
       case 'addToList':

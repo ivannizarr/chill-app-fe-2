@@ -20,6 +20,24 @@ html {
   scroll-behavior: smooth;
 }
 
+
+.toast-container {
+  --toastify-color-light: #111111;
+  --toastify-color-dark: #111111;
+  --toastify-text-color-light: #ffffff;
+  --toastify-text-color-dark: #ffffff;
+}
+
+div[data-sonner-toaster] {
+  --success-bg: #111111;
+  --success-border: #2E2E2E;
+  --success-text: #ffffff;
+
+  --error-bg: #111111;
+  --error-border: #2E2E2E;
+  --error-text: #ffffff;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;

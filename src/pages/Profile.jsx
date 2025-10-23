@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { Megaphone, UploadCloud, Pencil, ChevronRight, User, Mail, Lock } from "lucide-react";
+import { UploadCloud, ChevronRight, User, Mail, Lock, Pencil, Megaphone } from "lucide-react";
 import { toast } from 'react-hot-toast';
-import { useAuth } from '../context/AuthContext';
 import MainLayout from '../components/layout/MainLayout';
+import Button from '../components/ui/Button';
+import { useProfileForm } from '../hooks/useProfileForm';
 
-function InputField({
+const ProfileInputField = ({
   label,
   value,
   type = "text",
@@ -12,58 +12,56 @@ function InputField({
   onEdit,
   isEditing,
   onChange
-}) {
-  return (
-    <div className="mb-4">
-      <label className="block text-sm text-white/80 mb-2">{label}</label>
-      <div className="relative">
-        <div className="absolute left-4 top-1/2 -translate-y-1/2 text-white/60">
-          <Icon className="w-5 h-5" />
-        </div>
-        <input
-          type={type}
-          value={value}
-          onChange={onChange}
-          readOnly={!isEditing}
-          className={`w-full rounded-xl bg-neutral-800/80 border border-neutral-700 focus:border-blue-500 outline-none text-white placeholder:text-neutral-400 pl-12 pr-12 py-4 transition ${
-            isEditing ? 'ring-2 ring-blue-500/20' : ''
-          }`}
-        />
-        <button
-          onClick={onEdit}
-          aria-label={`${isEditing ? 'Simpan' : 'Ubah'} ${label}`}
-          className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-lg border border-white/20 text-white/90 hover:bg-white/10 transition-colors"
-        >
-          <Pencil className="w-4 h-4" />
-        </button>
+}) => (
+  <div className="mb-4">
+    <label className="block text-sm text-white/80 mb-2">{label}</label>
+    <div className="relative">
+      <div className="absolute left-4 top-1/2 -translate-y-1/2 text-white/60">
+        <Icon className="w-5 h-5" />
       </div>
+      <input
+        type={type}
+        value={value}
+        onChange={onChange}
+        readOnly={!isEditing}
+        className={`w-full rounded-xl bg-neutral-800/80 border border-neutral-700 focus:border-blue-500 outline-none text-white placeholder:text-neutral-400 pl-12 pr-12 py-4 transition ${
+          isEditing ? 'ring-2 ring-blue-500/20' : ''
+        }`}
+      />
+      <button
+        onClick={onEdit}
+        aria-label={`${isEditing ? 'Simpan' : 'Ubah'} ${label}`}
+        className="absolute right-3 top-1/2 -translate-y-1/2 p-2 rounded-lg border border-white/20 text-white/90 hover:bg-white/10 transition-colors"
+      >
+        <Pencil className="w-4 h-4" />
+      </button>
     </div>
-  );
-}
+  </div>
+);
 
-function SubscriptionCard({ onSubscribe }) {
-  return (
-    <div className="rounded-2xl bg-neutral-800/80 border border-white/10 p-6 flex items-start gap-4 shadow-lg">
-      <div className="mt-1 shrink-0">
-        <div className="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center border border-yellow-400/40">
-          <Megaphone className="w-5 h-5 text-yellow-400" />
-        </div>
-      </div>
-      <div className="flex-1">
-        <h3 className="text-base font-semibold text-white mb-1">Saat ini anda belum berlangganan</h3>
-        <p className="text-white/80 text-sm leading-relaxed">
-          Dapatkan Akses Tak Terbatas ke Ribuan Film dan Series Kesukaan Kamu!
-        </p>
-        <button
-          onClick={onSubscribe}
-          className="mt-4 inline-flex items-center justify-center px-5 py-2 rounded-full bg-blue-600 hover:bg-blue-700 text-white font-medium transition-colors"
-        >
-          Mulai Berlangganan
-        </button>
+const SubscriptionCard = ({ onSubscribe }) => (
+  <div className="rounded-2xl bg-neutral-800/80 border border-white/10 p-6 flex items-start gap-4 shadow-lg">
+    <div className="mt-1 shrink-0">
+      <div className="w-10 h-10 rounded-full bg-yellow-500/20 flex items-center justify-center border border-yellow-400/40">
+        <Megaphone className="w-5 h-5 text-yellow-400" />
       </div>
     </div>
-  );
-}
+    <div className="flex-1">
+      <h3 className="text-base font-semibold text-white mb-1">Saat ini anda belum berlangganan</h3>
+      <p className="text-white/80 text-sm leading-relaxed">
+        Dapatkan Akses Tak Terbatas ke Ribuan Film dan Series Kesukaan Kamu!
+      </p>
+      <Button
+        onClick={onSubscribe}
+        variant="primary"
+        size="sm"
+        className="mt-4 font-medium"
+      >
+        Mulai Berlangganan
+      </Button>
+    </div>
+  </div>
+);
 
 function PosterCard({ movie, onClick }) {
   return (
@@ -87,48 +85,15 @@ function PosterCard({ movie, onClick }) {
 }
 
 const Profile = ({ onNavigate, myList }) => {
-  const { user, login } = useAuth();
-  const [editingField, setEditingField] = useState(null);
-  const [formData, setFormData] = useState({
-    name: user?.name || 'William',
-    email: user?.email || 'william1980@gmail.com',
-    password: '**************'
-  });
-
-  const handleEdit = (field) => {
-    if (editingField === field) {
-      const updatedUser = {
-        ...user,
-        [field]: formData[field]
-      };
-      login(updatedUser);
-      setEditingField(null);
-      toast.success(`${field === 'name' ? 'Nama' : field === 'email' ? 'Email' : 'Password'} berhasil diubah!`);
-    } else {
-      setEditingField(field);
-    }
-  };
-
-  const handleInputChange = (field, value) => {
-    setFormData(prev => ({
-      ...prev,
-      [field]: value
-    }));
-  };
-
-  const handleSubscribe = () => {
-    toast.success('Fitur berlangganan akan segera hadir!');
-  };
-
-  const handleSaveAll = () => {
-    const updatedUser = {
-      ...user,
-      ...formData
-    };
-    login(updatedUser);
-    setEditingField(null);
-    toast.success('Profil berhasil disimpan!');
-  };
+  const {
+    user,
+    formData,
+    editingField,
+    handleEdit,
+    handleInputChange,
+    handleSaveAll,
+    handleSubscribe
+  } = useProfileForm();
 
   return (
     <MainLayout onNavigate={onNavigate}>
@@ -154,19 +119,21 @@ const Profile = ({ onNavigate, myList }) => {
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <button
+                  <Button
                     onClick={() => toast.info('Fitur ubah foto akan segera hadir!')}
-                    className="px-4 py-2 rounded-full border border-blue-500 text-blue-400 hover:bg-blue-500/10 transition text-sm w-fit"
+                    variant="ghost"
+                    size="sm"
+                    className="!border-blue-500 !text-blue-400 hover:!bg-blue-500/10 w-fit"
                   >
                     Ubah Foto
-                  </button>
+                  </Button>
                   <div className="flex items-center gap-2 text-xs text-white/70">
                     <UploadCloud className="w-4 h-4" /> Maksimal 2MB
                   </div>
                 </div>
               </div>
 
-              <InputField
+              <ProfileInputField
                 label="Nama Pengguna"
                 value={formData.name}
                 icon={User}
@@ -175,7 +142,7 @@ const Profile = ({ onNavigate, myList }) => {
                 onChange={(e) => handleInputChange('name', e.target.value)}
               />
 
-              <InputField
+              <ProfileInputField
                 label="Email"
                 value={formData.email}
                 type="email"
@@ -185,7 +152,7 @@ const Profile = ({ onNavigate, myList }) => {
                 onChange={(e) => handleInputChange('email', e.target.value)}
               />
 
-              <InputField
+              <ProfileInputField
                 label="Kata Sandi"
                 value={editingField === 'password' ? formData.password : '**************'}
                 type={editingField === 'password' ? 'text' : 'password'}
@@ -195,12 +162,14 @@ const Profile = ({ onNavigate, myList }) => {
                 onChange={(e) => handleInputChange('password', e.target.value)}
               />
 
-              <button
+              <Button
                 onClick={handleSaveAll}
-                className="mt-2 inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-blue-600 hover:bg-blue-500 transition font-medium"
+                variant="primary"
+                size="md"
+                className="mt-2 font-medium"
               >
                 Simpan Semua
-              </button>
+              </Button>
             </section>
           </div>
 
@@ -219,12 +188,13 @@ const Profile = ({ onNavigate, myList }) => {
             {myList.length === 0 ? (
               <div className="text-center py-12">
                 <p className="text-white/60 mb-4">Belum ada film dalam daftar Anda</p>
-                <button
+                <Button
                   onClick={() => onNavigate('home')}
-                  className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                  variant="primary"
+                  size="sm"
                 >
                   Jelajahi Film
-                </button>
+                </Button>
               </div>
             ) : (
               <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4 lg:gap-5">

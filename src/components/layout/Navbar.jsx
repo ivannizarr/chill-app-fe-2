@@ -46,7 +46,10 @@ const Navbar = ({ onNavigate }) => {
         <div className="flex items-center justify-between h-[80px] md:h-[94px]">
           <div className="flex items-center space-x-4 md:space-x-10">
             <button onClick={() => onNavigate('home')} className="flex items-center flex-shrink-0">
-              <img src="/Assets/img/logo.svg" alt="CHILL" className="h-6 md:h-8" />
+              <img
+                src="/Assets/img/logo.svg"
+                alt="CHILL"
+                className="h-6 md:h-8" />
             </button>
 
             <nav className="flex items-center space-x-4 md:space-x-10">
@@ -72,11 +75,13 @@ const Navbar = ({ onNavigate }) => {
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                   className="flex items-center space-x-2 p-1 rounded-lg hover:bg-white/10 transition-colors duration-200"
                 >
-                  <Avatar
-                    src={user.avatar}
-                    alt={user.name}
-                    size="sm"
-                  />
+                  <div className="w-8 h-8 md:w-10 md:h-10">
+                    <Avatar
+                      src={user.avatar}
+                      alt={user.name}
+                      className="w-full h-full"
+                    />
+                  </div>
                   <ChevronDown
                     className={`w-6 h-6 text-white transition-transform duration-200 ${
                       isDropdownOpen ? 'rotate-180' : ''

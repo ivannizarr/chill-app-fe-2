@@ -1,5 +1,6 @@
 import { Play, Trash2, Plus, X } from 'lucide-react';
 import MainLayout from '../components/layout/MainLayout';
+import Button from '../components/ui/Button';
 
 const MyList = ({ onNavigate, myList, onRemoveFromMyList, onClearMyList }) => {
 
@@ -29,28 +30,32 @@ const MyList = ({ onNavigate, myList, onRemoveFromMyList, onClearMyList }) => {
 
               {/* Action Buttons */}
               <div className="flex items-center gap-2 md:gap-3 flex-nowrap">
-                <button
+                <Button
                   onClick={() => onNavigate('home')}
-                  className="flex-1 md:flex-none min-w-0 px-3 md:px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-xs md:text-sm font-medium rounded-lg transition-colors duration-200 flex items-center justify-center gap-1 md:gap-2 whitespace-nowrap"
+                  variant="primary"
+                  size="sm"
+                  className="flex-1 md:flex-none min-w-0 text-xs md:text-sm whitespace-nowrap"
                 >
                   <Plus className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
                   <span className="hidden md:inline">Tambah Film</span>
                   <span className="md:hidden">Tambah</span>
-                </button>
+                </Button>
 
                 {myList.length > 0 && (
-                  <button
+                  <Button
                     onClick={() => {
                       if (window.confirm('Hapus semua film dari daftar Anda?')) {
                         onClearMyList();
                       }
                     }}
-                    className="flex-1 md:flex-none min-w-0 px-3 md:px-4 py-2 bg-red-600/20 hover:bg-red-600/30 text-red-400 text-xs md:text-sm font-medium rounded-lg border border-red-600/30 transition-colors duration-200 flex items-center justify-center gap-1 md:gap-2 whitespace-nowrap"
+                    variant="ghost"
+                    size="sm"
+                    className="flex-1 md:flex-none min-w-0 !bg-red-600/20 hover:!bg-red-600/30 !text-red-400 text-xs md:text-sm !border-red-600/30 whitespace-nowrap"
                   >
                     <Trash2 className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
                     <span className="hidden md:inline">Hapus Semua</span>
                     <span className="md:hidden">Hapus</span>
-                  </button>
+                  </Button>
                 )}
               </div>
             </div>
@@ -69,12 +74,14 @@ const MyList = ({ onNavigate, myList, onRemoveFromMyList, onClearMyList }) => {
                 <p className="text-white/70 text-sm md:text-base mb-6 max-w-lg">
                   Mulai tambahkan film favorit Anda dengan menekan tombol dibawah ini.
                 </p>
-                <button
+                <Button
                   onClick={() => onNavigate('home')}
-                  className="px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-200"
+                  variant="primary"
+                  size="md"
+                  className="font-semibold"
                 >
                   Jelajahi Film
-                </button>
+                </Button>
               </div>
             ) : (
 
